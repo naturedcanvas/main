@@ -1560,5 +1560,22 @@ window.addEventListener('scroll', () => { closeMobileNav(); }, {passive:true});
     });
   })();
 </script>
+<script>
+(function() {
+  function setHeroHeight() {
+    var hero = document.getElementById('hero');
+    if (!hero) return;
+    var h = (window.visualViewport && window.visualViewport.height) || window.innerHeight;
+    hero.style.height = h + 'px';
+  }
+  setHeroHeight();
+  window.addEventListener('resize', setHeroHeight);
+  window.addEventListener('orientationchange', function(){ setTimeout(setHeroHeight, 100); });
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', setHeroHeight);
+  }
+  setTimeout(setHeroHeight, 300);
+})();
+</script>
 </body>
 </html>
