@@ -10,11 +10,11 @@
 <meta property="og:description" content="Handcrafted resin tables, paintings and woodwork made in Accra, Ghana. Custom commissions welcome.">
 <meta property="og:url" content="https://pau3.github.io/natures-canvas/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://lh3.googleusercontent.com/d/1tV2U1pHOnROBHwPjD7EV7YIL0WYzDR4c">
+<meta property="og:image" content="assets/catalog/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Nature's Canvas — Resin Tables · Paintings · Woodwork">
 <meta name="twitter:description" content="Handcrafted resin tables, paintings and woodwork made in Accra, Ghana.">
-<meta name="twitter:image" content="https://lh3.googleusercontent.com/d/1tV2U1pHOnROBHwPjD7EV7YIL0WYzDR4c">
+<meta name="twitter:image" content="assets/catalog/og-image.jpg">
 <meta name="theme-color" content="#2D4A35">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -1241,12 +1241,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:4rem 5% 2rem}
 // ─── SLIDESHOW ──────────────────────────────────
 const slideImages = [
   "assets/catalog/hero-slide-1.jpg",
-  "assets/catalog/hero-slide-2.jpg",
-  "assets/catalog/hero-slide-3.jpg",
-  "assets/catalog/hero-slide-4.jpg",
-  "assets/catalog/hero-slide-5.jpg",
-  "assets/catalog/hero-slide-6.jpg",
-  "assets/catalog/hero-slide-7.jpg"
+  "assets/catalog/hero-slide-2.jpg"
 ];
 const SLIDE_DURATION = 5000;
 let slideIndex = 0, slideTimer = null;
@@ -1375,11 +1370,11 @@ function openGallery(type, idx) {
   const g = {
     paintings: [
       {src:'assets/catalog/category-paintings.jpg',caption:'Paintings — Canvas & Mixed Media'},
-      {src:'https://lh3.googleusercontent.com/d/1WpGJ0C9GrPputl2j_EAfYmf53-eVMpX5',caption:'Original Works'},
+      {src:'assets/catalog/craft-paintings.jpg',caption:'Original Works'},
     ],
     woodwork: [
       {src:'assets/catalog/category-woodwork.jpg',caption:'Woodwork — Carved & Sculpted'},
-      {src:'https://lh3.googleusercontent.com/d/1eODrwTqGZsAz5iloCIz4GO2frdlYAK_F',caption:'Custom Woodwork'},
+      {src:'assets/catalog/craft-woodwork.jpg',caption:'Custom Woodwork'},
     ]
   };
   lbImages = g[type] || [];
