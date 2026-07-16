@@ -59,7 +59,7 @@ section{padding:6rem 5%}
 /* ── HERO SLIDESHOW ───────────────────────── */
 #hero{position:relative;height:100vh;height:100dvh;overflow:hidden;display:flex;align-items:center}
 .slide-track{position:absolute;inset:0;z-index:0}
-.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;background-size:cover;background-position:center center;background-repeat:no-repeat;image-rendering:high-quality}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;background-size: contain;background-position:center center;background-repeat:no-repeat;image-rendering:high-qualitybackground-color: #1c1a15;}
 .slide.active{opacity:1}
 .slide::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(20,40,25,.75) 0%,rgba(15,20,15,.45) 60%,rgba(0,0,0,.2) 100%)}
 .slide-dots{position:absolute;bottom:2.2rem;left:50%;transform:translateX(-50%);display:flex;gap:.6rem;z-index:10}
