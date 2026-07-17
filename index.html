@@ -48,6 +48,7 @@ section{padding:6rem 5%}
 #main-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 4%;height:72px;background:rgba(247,245,239,.97);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,.06);transition:box-shadow .3s}
 .nav-left{display:flex;align-items:center;gap:1.2rem}
 .nav-logo-img{height:46px;width:auto;object-fit:contain}
+.nav-logo-mark{display:none;height:44px;width:auto;object-fit:contain;filter:drop-shadow(0 1px 4px rgba(0,0,0,.45))}
 .nav-logo-text{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:var(--forest);line-height:1.1}
 .nav-logo-text span{color:var(--accent);font-style:italic;display:block;font-size:.8rem;font-weight:400;letter-spacing:.06em}
 .nav-links{display:flex;gap:1.8rem;list-style:none}
@@ -359,6 +360,12 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:4rem 5% 2rem}
 @media(max-width:768px) {
   .hamburger { display: flex; }
   .nav-cta { display: none; }
+  #main-nav{background:transparent;border-bottom:none;backdrop-filter:none;transition:background .3s,box-shadow .3s,border-color .3s}
+  #main-nav.scrolled{background:rgba(247,245,239,.97);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,.06);box-shadow:0 2px 20px rgba(0,0,0,.08)}
+  .nav-logo-img{display:none}
+  .nav-logo-mark{display:block;height:52px}
+  .hamburger span{background:var(--white)}
+  #main-nav.scrolled .hamburger span{background:var(--forest)}
 }
 
 </style>
@@ -369,6 +376,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:4rem 5% 2rem}
 <nav id="main-nav">
   <div class="nav-left">
     <img src="logo.jpg" alt="Nature's Canvas" class="nav-logo-img">
+    <img src="logo-mark.png" alt="Nature's Canvas" class="nav-logo-mark">
     <div class="nav-logo-text">Nature's Canvas<span>Painting · Woodwork · Resin Art</span></div>
   </div>
   <ul class="nav-links">
@@ -1478,10 +1486,22 @@ const observer = new IntersectionObserver(entries => {
 }, {threshold: 0.08});
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-window.addEventListener('scroll', () => {
-  document.getElementById('main-nav').style.boxShadow =
-    window.scrollY > 60 ? '0 2px 20px rgba(0,0,0,.08)' : 'none';
-});
+(function(){
+  const navEl = document.getElementById('main-nav');
+  const heroEl = document.getElementById('hero');
+  if (navEl && heroEl && 'IntersectionObserver' in window) {
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        navEl.classList.toggle('scrolled', !entry.isIntersecting);
+      });
+    }, {threshold: 0, rootMargin: '-72px 0px 0px 0px'});
+    navObserver.observe(heroEl);
+  } else if (navEl) {
+    window.addEventListener('scroll', () => {
+      navEl.classList.toggle('scrolled', window.scrollY > 60);
+    });
+  }
+})();
 
 // ─── FORM ─────────────────────────────────────────
 function handleForm(e) {
